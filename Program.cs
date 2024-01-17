@@ -4,26 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace atividade_4
+namespace tabuada_com_var
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
-            Console.ReadLine()
-            int a = 1;
-            int b = -3;
-            int c = -4;
-           
-            double delta = b * b - 4 * a * c;
-            double a1 = (-b + Math.Sqrt(delta)) / (2 * a);
-            double a2 = (-b - Math.Sqrt(delta)) / (2 * a);
-           
-            MessageBox.Show("a1 = " + a1 + "\na2 = " + a2);
-            Console.WriteLine();
-            Console.ReadLine()
+            
+        {
+          
+            {
+                Console.Write("Digite o número para ver a tabuada: ");
+                int numero = int.Parse(Console.ReadLine());
 
+                Console.Write("Digite até qual número deseja calcular a tabuada: ");
+                int limite = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"\nTabuada do {numero} até {limite}:");
+
+                for (int i = 1; i <= limite; i++)
+                {
+                    int resultado = numero * i;
+                    Console.WriteLine($"{numero} x {i} = {resultado}");
+                }
+
+                Console.ReadLine(); // Aguarda o usuário pressionar Enter antes de fechar
+            }
         }
+
+
+
+
     }
+}
 }
