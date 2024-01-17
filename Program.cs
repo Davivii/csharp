@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace aula02
+namespace atividade_2
 {
     internal class Program
     {
@@ -13,13 +13,7 @@ namespace aula02
 
             Console.WriteLine();
             Console.ReadLine();
-            int idadejose = 10;
-            int idadetasha = 25;
-            int idadevanessa = 30;
-            // Calcule a média das idades.
-            double mediaIdades = (idadejose + idadetasha + idadevanessa) / 3.0;
-            // Exiba o resultado em um MessageBox.
-            MessageBox.Show("A média das idades é: " + mediaIdades);
+            Float pi = 3.14;
             Console.WriteLine();
             Console.ReadLine();
 
