@@ -1,25 +1,64 @@
+using System;
+
+class Calculadora
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Calculadora em C#");
+            Console.WriteLine("Escolha a operação:");
+            Console.WriteLine("1 - Adição");
+            Console.WriteLine("2 - Subtração");
+            Console.WriteLine("3 - Multiplicação");
+            Console.WriteLine("4 - Divisão");
+            Console.WriteLine("0 - Sair");
+
+            // Obter a escolha do usuário
+            Console.Write("Digite o número da operação desejada: ");
+            int escolha = Convert.ToInt32(Console.ReadLine());
+
+            if (escolha == 0)
+            {
+                Console.WriteLine("Saindo da calculadora.");
+                break;
+            }
+
+            // Obter os números para a operação
+            Console.Write("Digite o primeiro número: ");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Digite o segundo número: ");
+            double num2 = Convert.ToDouble(Console.ReadLine());
+
+            // Realizar a operação selecionada
+            double resultado = 0;
+
+            switch (escolha)
+            {
+                case 1:
+                    resultado = num1 + num2;
+                    break;
+                case 2:
+                    resultado = num1 - num2;
+                    break;
+                case 3:
+                    resultado = num1 * num2;
+                    break;
+                case 4:
+                    if (num2 != 0)
+                        resultado = num1 / num2;
+                    else
+                        Console.WriteLine("Erro: Divisão por zero.");
+                    break;
+                default:
+                    Console.WriteLine("Escolha inválida. Tente novamente.");
+                    continue;
+            }
+
+            // Exibir o resultado
+            Console.WriteLine($"Resultado: {resultado}");
+        }
+    }
+}
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculadora", "calculadora\calculadora.csproj", "{DEDD451D-2E7E-4149-BDEC-2B68E6CB12DE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEDD451D-2E7E-4149-BDEC-2B68E6CB12DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEDD451D-2E7E-4149-BDEC-2B68E6CB12DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEDD451D-2E7E-4149-BDEC-2B68E6CB12DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEDD451D-2E7E-4149-BDEC-2B68E6CB12DE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0CF72574-A203-477E-9E98-A93D281A698F}
-	EndGlobalSection
-EndGlobal
