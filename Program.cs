@@ -1,40 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tabuada_com_var
-{
+namespace atividade1
+{   
     internal class Program
     {
-        static void Main(string[] args)
-        {
+       
+
+
+    
+        static void Main()
+        {          
+            Console.Write("Informe a quantidade mínima em estoque: ");
+            float quantidadeMinima = float.Parse(Console.ReadLine());
+
+            Console.Write("Informe a quantidade máxima em estoque: ");
+            float quantidadeMaxima = float.Parse(Console.ReadLine());
+
             
-        {
+            float estoqueMedio = CalcularEstoqueMedio(quantidadeMinima, quantidadeMaxima);
           
-            {
-                Console.Write("Digite o número para ver a tabuada: ");
-                int numero = int.Parse(Console.ReadLine());
-
-                Console.Write("Digite até qual número deseja calcular a tabuada: ");
-                int limite = int.Parse(Console.ReadLine());
-
-                Console.WriteLine($"\nTabuada do {numero} até {limite}:");
-
-                for (int i = 1; i <= limite; i++)
-                {
-                    int resultado = numero * i;
-                    Console.WriteLine($"{numero} x {i} = {resultado}");
-                }
-
-                Console.ReadLine(); // Aguarda o usuário pressionar Enter antes de fechar
-            }
+            Console.WriteLine($"O estoque médio é: {estoqueMedio}");
         }
 
+        static float CalcularEstoqueMedio(float quantidadeMinima, float quantidadeMaxima)
+        {
+            float estoqueMedio = (quantidadeMinima + quantidadeMaxima) / 2;
+            return estoqueMedio;
 
 
 
+
+
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
 }
-}
+
