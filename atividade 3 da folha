@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace atividade_folha_3
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            // Entrada de dados
+            Console.Write("Digite a identificação do vendedor: ");
+            string identificacaoVendedor = Console.ReadLine();
+
+            Console.Write("Digite o código da peça: ");
+            string codigoPeca = Console.ReadLine();
+
+            Console.Write("Digite o preço unitário da peça: ");
+            double precoUnitario;
+            while (!double.TryParse(Console.ReadLine(), out precoUnitario) || precoUnitario < 0)
+            {
+                Console.WriteLine("Por favor, digite um valor válido para o preço unitário da peça.");
+            }
+
+            Console.Write("Digite a quantidade vendida: ");
+            int quantidadeVendida;
+            while (!int.TryParse(Console.ReadLine(), out quantidadeVendida) || quantidadeVendida < 0)
+            {
+                Console.WriteLine("Por favor, digite uma quantidade válida.");
+            }
+
+            // Calcular comissão
+            double comissao = CalcularComissao(precoUnitario, quantidadeVendida);
+
+            // Exibir resultados
+            Console.WriteLine("\nResumo da Venda:");
+            Console.WriteLine($"Identificação do Vendedor: {identificacaoVendedor}");
+            Console.WriteLine($"Código da Peça: {codigoPeca}");
+            Console.WriteLine($"Preço Unitário da Peça: R${precoUnitario:F2}");
+            Console.WriteLine($"Quantidade Vendida: {quantidadeVendida}");
+            Console.WriteLine($"Total da Venda: R${precoUnitario * quantidadeVendida:F2}");
+            Console.WriteLine($"Comissão do Vendedor: R${comissao:F2}");
+        }
+
+        // Função para calcular a comissão
+        static double CalcularComissao(double precoUnitario, int quantidadeVendida)
+        {
+            const double taxaComissao = 0.05; // 5% de comissão
+            double totalVenda = precoUnitario * quantidadeVendida;
+            double comissao = totalVenda * taxaComissao;
+            return comissao;
+        }
+    }
+
+
+}
+    
+
+
