@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace atividade_6
+{
+    internal class Program
+    {
+        
+        
+            
+
+        
+        
+            static void Main()
+            {
+               
+                Console.Write("Digite a temperatura em graus Celsius: ");
+                double temperaturaCelsius = Convert.ToDouble(Console.ReadLine());
+
+                
+                double temperaturaFahrenheit = CelsiusParaFahrenheit(temperaturaCelsius);
+                Console.WriteLine($"A temperatura em Fahrenheit é: {temperaturaFahrenheit:F2} °F");
+            }
+
+           
+            static double CelsiusParaFahrenheit(double celsius)
+            {
+                double fahrenheit = (9 * celsius + 160) / 5;
+                return fahrenheit;
+            }
+        }
+
+
+
+
+
+
+    }
+
+
