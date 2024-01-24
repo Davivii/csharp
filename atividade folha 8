@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace atividade_8
+{
+    internal class Program
+  
+    {
+        static void Main()
+        {
+          
+            Console.Write("Digite o raio da lata de óleo: ");
+            double raio = Convert.ToDouble(Console.ReadLine());
+
+            
+            Console.Write("Digite a altura da lata de óleo: ");
+            double altura = Convert.ToDouble(Console.ReadLine());
+
+            
+            double volume = CalcularVolumeLataDeOleo(raio, altura);
+            Console.WriteLine($"O volume da lata de óleo é: {volume:F2} unidades cúbicas");
+        }
+
+        
+        static double CalcularVolumeLataDeOleo(double raio, double altura)
+        {
+            double volume = 3.14159 * raio * raio * altura;
+            return volume;
+        }
+    }
+
+
+
+
+}
+
