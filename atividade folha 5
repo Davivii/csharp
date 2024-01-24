@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace atividade_da_folha_5
+{
+    internal class Program
+    {
+     
+
+     class program
+        {
+            static void Main()
+            {
+                // Entrada de dados
+                Console.Write("Digite o tempo gasto na viagem (em horas): ");
+                double tempoViagem = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Digite a velocidade média (em Km/h): ");
+                double velocidadeMedia = Convert.ToDouble(Console.ReadLine());
+
+                // Calcular a distância
+                double distanciaPercorrida = tempoViagem * velocidadeMedia;
+
+                // Calcular a quantidade de litros utilizada
+                double litrosUsados = distanciaPercorrida / 12.0;
+
+                // Exibir resultados
+                Console.WriteLine("\nResultados da Viagem:");
+                Console.WriteLine($"Velocidade Média: {velocidadeMedia} Km/h");
+                Console.WriteLine($"Tempo Gasto: {tempoViagem} horas");
+                Console.WriteLine($"Distância Percorrida: {distanciaPercorrida} Km");
+                Console.WriteLine($"Quantidade de Litros Utilizada: {litrosUsados:F2} litros");
+            }
+        }
+
+
+
+    }
+}
