@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace atividade_final_2
+{
+
+
+    using System;
+    using System.Collections.Generic;
+
+    public class Ingrediente
+    {
+        public string Nome;
+        public decimal Quantidade;
+        public string UnidadeDeMedida;
+    }
+
+    public class Receita
+    {
+        public string Nome;
+        public int TempoPreparacao;
+        public string GrauDificuldade;
+        public List<string> Categorias = new List<string>();
+        public string DescricaoPreparo;
+        public List<Ingrediente> Ingredientes = new List<Ingrediente>();
+    }
+
+    public class SistemaReceitas
+    {
+        private List<Receita> receitas = new List<Receita>();
+
+        public void AdicionarReceita(Receita receita) => receitas.Add(receita);
+
+        public void EditarReceita(string nomeReceita, Receita novaReceita)
+        {
+            var receitaExistente = receitas.Find(r => r.Nome.Equals(nomeReceita, StringComparison.OrdinalIgnoreCase));
+
+            if (receitaExistente != null)
+            {
+                receitas.Remove(receitaExistente);
+                receitas.Add(novaReceita);
+            }
+        }
+
+        public void ExcluirReceita(string nomeReceita) =>
+            receitas.RemoveAll(r => r.Nome.Equals(nomeReceita, StringComparison.OrdinalIgnoreCase));
+
+        public List<Receita> BuscarPorCategoria(string categoria) =>
+            receitas.FindAll(r => r.Categorias.Contains(categoria, StringComparer.OrdinalIgnoreCase));
+
+        public void ExibirTodasReceitas()
+        {
+            foreach (var receita in receitas)
+            {
+                Console.WriteLine($"Nome: {receita.Nome}");
+                Console.WriteLine($"Tempo de Preparação: {receita.TempoPreparacao} minutos");
+                Console.WriteLine($"Grau de Dificuldade: {receita.GrauDificuldade}");
+                Console.WriteLine($"Categorias: {string.Join(", ", receita.Categorias)}");
+                Console.WriteLine($"Descrição do Preparo: {receita.DescricaoPreparo}");
+                Console.WriteLine("Ingredientes:");
+                foreach (var ingrediente in receita.Ingredientes)
+                {
+                    Console.WriteLine($"  - {ingrediente.Nome}: {ingrediente.Quantidade} {ingrediente.UnidadeDeMedida}");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public Receita ConsultarReceita(string nomeReceita) =>
+            receitas.Find(r => r.Nome.Equals(nomeReceita, StringComparison.OrdinalIgnoreCase));
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            SistemaReceitas sistema = new SistemaReceitas();
+
+            var novaReceita = new Receita
+            {  
+
+                Nome = "Lasanha",
+                TempoPreparacao = 60,
+                GrauDificuldade = "Médio",
+                Categorias = new List<string> { "Massas", "Carnes" },
+                DescricaoPreparo = "Deliciosa lasanha caseira.",
+                Ingredientes = new List<Ingrediente>
+            {
+                new Ingrediente { Nome = "Massa de Lasanha", Quantidade = 250, UnidadeDeMedida = "g" },
+                new Ingrediente { Nome = "Carne Moída", Quantidade = 500, UnidadeDeMedida = "g" },
+                new Ingrediente { Nome = "Molho de Tomate", Quantidade = 500, UnidadeDeMedida = "ml" },
+            }
+            };
+
+            sistema.AdicionarReceita(novaReceita);
+
+            // Adicionado exemplo de consulta de receita
+            var receitaConsultada = sistema.ConsultarReceita("Lasanha");
+            if (receitaConsultada != null)
+            {
+                Console.WriteLine("Receita Consultada:");
+                Console.WriteLine($"Nome: {receitaConsultada.Nome}");
+                Console.WriteLine($"Tempo de Preparação: {receitaConsultada.TempoPreparacao} minutos");
+                Console.WriteLine($"Grau de Dificuldade: {receitaConsultada.GrauDificuldade}");
+                Console.WriteLine($"Categorias: {string.Join(", ", receitaConsultada.Categorias)}");
+                Console.WriteLine($"Descrição do Preparo: {receitaConsultada.DescricaoPreparo}");
+                Console.WriteLine("Ingredientes:");
+                foreach (var ingrediente in receitaConsultada.Ingredientes)
+                {
+                    Console.WriteLine($"  - {ingrediente.Nome}: {ingrediente.Quantidade} {ingrediente.UnidadeDeMedida}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Receita não encontrada.");
+            }
+
+            // Adicione uma pausa para manter o console aberto
+            Console.ReadLine();
+        }
+    }
+    }
